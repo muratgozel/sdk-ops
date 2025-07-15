@@ -1,0 +1,51 @@
+name: release
+
+on:
+    push:
+        branches:
+            - main
+
+env:
+    CI: 1
+    GITHUB_TOKEN: ${{ secrets.PERSONAL_PAT }}
+    PYTHON_VERSION: "3.12"
+
+permissions:
+    contents: write # to be able to publish a GitHub release
+    issues: write # to be able to comment on released issues
+    pull-requests: write # to be able to comment on released pull requests
+    id-token: write # to enable use of OIDC for npm provenance
+    packages: write
+
+jobs:
+    release:
+        runs-on: ubuntu-24.04
+        steps:
+            - name: Install python
+              uses: actions/setup-python@v4
+              with:
+                python-version: ${{ env.PYTHON_VERSION }}
+            - name: Install hatch
+              run: pip install hatch
+            - name: Checkout repository
+              uses: actions/checkout@v4
+              with:
+                fetch-depth: 0
+            - name: Run tests
+              run: hatch run dev:APPLICATION_CONFIG_DIR=./config test
+            - name: Create a git release tag
+              id: release
+              uses: cocogitto/cocogitto-action@v3
+              with:
+                release: true
+                git-user: 'Murat Gözel'
+                git-user-email: 'murat@gozel.com.tr'
+            - name: Print git release tag
+              run: "echo '${{ steps.release.outputs.version }}'"
+            - name: Create github release
+              if: steps.release.outputs.version != ''
+              run: |
+                gh release create ${{ steps.release.outputs.version }} \
+                  --title "${{ steps.release.outputs.version }}" \
+                  --generate-notes \
+                  --latest

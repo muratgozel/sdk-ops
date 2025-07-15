@@ -1,0 +1,86 @@
+[build-system]
+requires = ["hatchling", "hatch-vcs"]
+build-backend = "hatchling.build"
+
+[project]
+name = "sdkops"
+dynamic = ["version"]
+description = 'Generates fully typed python SDK modules by reading OpenAPI schemas.'
+readme = "README.md"
+requires-python = ">=3.8"
+license = "MIT"
+keywords = []
+authors = [
+  { name = "Murat Gözel", email = "murat@gozel.com.tr" },
+]
+classifiers = [
+  "Development Status :: 4 - Beta",
+  "Programming Language :: Python",
+  "Programming Language :: Python :: 3.8",
+  "Programming Language :: Python :: 3.9",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: Implementation :: CPython",
+  "Programming Language :: Python :: Implementation :: PyPy",
+]
+dependencies = [
+  "httpx",
+  "rich",
+  "click",
+  "black"
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest",
+  "pytest-cov",
+  "pre-commit"
+]
+
+[tool.hatch.envs.dev]
+features = [
+  "dev",
+]
+
+[tool.hatch.envs.dev.scripts]
+test = "pytest {args}"
+test-cov = "pytest --cov-report=term-missing --cov={args}"
+
+[project.urls]
+Documentation = "https://github.com/muratgozel/sdk-ops#readme"
+Issues = "https://github.com/muratgozel/sdk-ops/issues"
+Source = "https://github.com/muratgozel/sdk-ops"
+
+[project.scripts]
+sdkops = "sdkops.cli:generate"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/sdkops"]
+
+[tool.hatch.version]
+source = "vcs"
+raw-options = { local_scheme = "no-local-version" }
+
+[tool.hatch.envs.types]
+extra-dependencies = [
+  "mypy>=1.0.0",
+]
+[tool.hatch.envs.types.scripts]
+check = "mypy --install-types --non-interactive {args:src/sdkops tests}"
+
+[tool.coverage.run]
+source_pkgs = ["sdkops", "tests"]
+branch = true
+parallel = true
+
+[tool.coverage.paths]
+sdkops = ["src/sdkops", "*/sdk-ops/src/sdkops"]
+tests = ["tests", "*/sdk-ops/tests"]
+
+[tool.coverage.report]
+exclude_lines = [
+  "no cov",
+  "if __name__ == .__main__.:",
+  "if TYPE_CHECKING:",
+]
