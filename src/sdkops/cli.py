@@ -14,7 +14,7 @@ from sdkops.openapi import parse
 from sdkops.generator import to_ast
 
 
-@click.command("generate", short_help="generates a python sdk from openapi schema.")
+@click.command("generate", short_help="generates a python sdk from an openapi schema.")
 @click.argument("file", nargs=1)
 @click.option("-n", "--name", required=True, help="sdk package name.")
 @click.option("-d", "--dest", required=True, help="directory to save the sdk package.")
