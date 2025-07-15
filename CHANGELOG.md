@@ -2,6 +2,14 @@
 All notable changes to this project will be documented in this file. See [conventional commits](https://www.conventionalcommits.org/) for commit guidelines.
 
 - - -
+## [0.0.1](https://github.com/muratgozel/sdk-ops/compare/038cd64b01e03e8b94d69576d0f03578eb73b73f..0.0.1) - 2025-07-15
+#### Bug Fixes
+- sdk generation - ([038cd64](https://github.com/muratgozel/sdk-ops/commit/038cd64b01e03e8b94d69576d0f03578eb73b73f)) - Murat Gözel
+#### Continuous Integration
+- test command - ([e4402cf](https://github.com/muratgozel/sdk-ops/commit/e4402cf2b8947ad4b29bd653e936ea15837cc97d)) - Murat Gözel
+
+- - -
+
 ## [0.1.4](https://github.com/harboorio/sdk-ops/compare/e4ef44c727bf3085f5111a8b5b49aa2a5f6dbc3d..0.1.4) - 2025-06-07
 #### Bug Fixes
 - class name generation - ([e4ef44c](https://github.com/harboorio/sdk-ops/commit/e4ef44c727bf3085f5111a8b5b49aa2a5f6dbc3d)) - Murat Gözel
