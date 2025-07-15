@@ -2,6 +2,12 @@
 All notable changes to this project will be documented in this file. See [conventional commits](https://www.conventionalcommits.org/) for commit guidelines.
 
 - - -
+## [0.0.2](https://github.com/muratgozel/sdk-ops/compare/dfe1f41b4df29d20603ce3ec0a13b76f0a203029..0.0.2) - 2025-07-15
+#### Bug Fixes
+- ci version - ([dfe1f41](https://github.com/muratgozel/sdk-ops/commit/dfe1f41b4df29d20603ce3ec0a13b76f0a203029)) - Murat Gözel
+
+- - -
+
 ## [0.0.1](https://github.com/muratgozel/sdk-ops/compare/038cd64b01e03e8b94d69576d0f03578eb73b73f..0.0.1) - 2025-07-15
 #### Bug Fixes
 - sdk generation - ([038cd64](https://github.com/muratgozel/sdk-ops/commit/038cd64b01e03e8b94d69576d0f03578eb73b73f)) - Murat Gözel
