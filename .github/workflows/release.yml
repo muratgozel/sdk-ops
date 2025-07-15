@@ -32,7 +32,7 @@ jobs:
               with:
                 fetch-depth: 0
             - name: Run tests
-              run: hatch run dev:APPLICATION_CONFIG_DIR=./config test
+              run: hatch run dev:test
             - name: Create a git release tag
               id: release
               uses: cocogitto/cocogitto-action@v3
